@@ -28,6 +28,9 @@ clear:
 login-passbolt:
 	@docker compose exec passbolt bash
 
+login-db:
+	@docker compose exec db bash -c 'mysql -u$${MYSQL_USER} -p$${MYSQL_PASSWORD} $${MYSQL_DATABASE}'
+
 backup:
 	@echo "⏳ 💾 Create backup ./backups/backup_$$(date '+%Y-%m-%d').sql"
 	@docker compose exec db bash -c 'mysqldump -u$${MYSQL_USER} -p$${MYSQL_PASSWORD} $${MYSQL_DATABASE}' > ./backups/backup_$$(date '+%Y-%m-%d').sql
