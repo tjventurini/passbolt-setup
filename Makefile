@@ -40,4 +40,4 @@ backup:
 	@echo "✅ 💾 ./backups/backup_$$(date '+%Y-%m-%d').sql"
 
 create-admin:
-	@echo "Firstname: " && read firstname && echo "Lastname:" && read lastname && echo "E-Mail:" && read email && docker compose exec passbolt su -m -c "/usr/share/php/passbolt/bin/cake passbolt register_user -u $$email -f $$firstname -l $lastname -r admin" -s /bin/sh www-data
+	@echo "Firstname:" && read firstname && echo "Lastname:" && read lastname && echo "E-Mail:" && read email && docker compose exec passbolt su -m -c "/usr/share/php/passbolt/bin/cake passbolt register_user -u $$email -f $$firstname -l $$lastname -r admin" -s /bin/sh www-data
