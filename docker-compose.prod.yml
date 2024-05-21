@@ -28,7 +28,7 @@ services:
     depends_on:
       - db
     environment:
-      APP_FULL_BASE_URL: http://${DOMAIN}
+      APP_FULL_BASE_URL: https://${DOMAIN}
       DATASOURCES_DEFAULT_HOST: "db"
       DATASOURCES_DEFAULT_USERNAME: ${DB_USER}
       DATASOURCES_DEFAULT_PASSWORD: ${DB_PASSWORD}
