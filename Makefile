@@ -38,3 +38,6 @@ backup:
 	@docker compose cp passbolt:/etc/passbolt/gpg/serverkey.asc ./backups/serverkey.asc
 	@docker compose exec passbolt tar cvfzp - -C /usr/share/php/passbolt/ webroot/img/avatar > ./backups/passbolt-avatars_$$(date '+%Y-%m-%d').tar.gz
 	@echo "✅ 💾 ./backups/backup_$$(date '+%Y-%m-%d').sql"
+
+create-admin:
+	@echo "Firstname: " && read firstname && echo "Lastname:" && read lastname && echo "E-Mail:" && read email && docker compose exec passbolt su -m -c "/usr/share/php/passbolt/bin/cake passbolt register_user -u $$email -f $$firstname -l $lastname -r admin" -s /bin/sh www-data
